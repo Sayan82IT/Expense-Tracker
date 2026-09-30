@@ -1,7 +1,7 @@
 import User from "../models/userModel.js";
 import jwt from "jsonwebtoken";
 
-const JWT_SECRET = 'your_jwt_secret_here'; // In production, use environment variable
+const JWT_SECRET = process.env.JWT_SECRET; // In production, use environment variable
 
 export default async function authMiddleware(req, res, next) {
     //grap the token from the header

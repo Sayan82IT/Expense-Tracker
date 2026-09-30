@@ -5,8 +5,8 @@ import jwt from 'jsonwebtoken';
 import { sendOTPEmail } from '../utils/sendEmail.js';
 import crypto from 'crypto';
 
-const JWT_SECRET = 'your_jwt_secret_here'; // In production, use environment variable
-const TOKEN_EXPIRY = '24h'; // Token expiry time
+const JWT_SECRET = process.env.JWT_SECRET; // In production, use environment variable
+const TOKEN_EXPIRY = process.env.TOKEN_EXPIRY ||'24h'; // Token expiry time
 
 const createToken = (user) => {
     return jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: TOKEN_EXPIRY });
